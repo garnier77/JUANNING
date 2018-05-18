@@ -2,8 +2,8 @@ const express= require('express');
 const hbs = require('hbs');
 const fs = require('fs');
 
-const port = process.env.PORT || 3000;
-var app = express();
+const port = process.env.PORT || 7777;
+let app = express();
 
 hbs.registerPartials(__dirname + '/views/partials')
 app.set('view engine', 'hbs');
@@ -36,6 +36,13 @@ hbs.registerHelper('getCurrentYear', ()=>{
 
 hbs.registerHelper('screamIt', (text)=>{
    return text.toUpperCase();
+});
+
+app.get('/bitcoin', (req,res) => {
+   res.render('bitcoin.hbs' ,{
+       pageTitle: 'This is BITCOIN HOOOOOO!!!',
+       welcomeMessage: 'i love bitconnekt'
+   })
 });
 
 app.get('/', (req, res) =>{
